@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# This is a full-stack demo application built with:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend: React + Vite + TypeScript
+Backend: Node.js + Express + TypeScript
+Database: PostgreSQL
+Containerization: Docker & Docker Compose
+The app lets you manage hierarchical categories (parent/child relationships) with a REST API and frontend tree view.
 
-Currently, two official plugins are available:
+# Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+View categories in a hierarchical tree.
+Update category name or parent via dropdown.
+Backend API built with Express + PostgreSQL.
+Database bootstrapped with init.sql.
+Fully containerized with Docker Compose.
 
-## React Compiler
+# Softwares to be installed:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Docker
+Docker Compose
 
-## Expanding the ESLint configuration
+# Installation & Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+``` git clone https://github.com/tarunabagh19/Sliide-fullstack-test.git
+cd Sliide-fullstack-test/test-categories
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+# 1. Build & Start the App
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+   docker-compose up --build
+```
+# 2. Verify Running Services
+
+Frontend: http://localhost:3000
+
+Backend API: http://localhost:5000/api/categories
+
+Database: Accessible inside Docker at host db, port 5432, user postgres.
+
+# Rebuild the containers
+
+docker-compose build
+
+# Stop all containers:
+
+docker-compose down
+
+# Reset the database:
+
+docker-compose down -v
+docker-compose up --build
+
